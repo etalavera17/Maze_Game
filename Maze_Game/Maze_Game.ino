@@ -40,8 +40,8 @@
 #include <MeggyJrSimple.h>  // Required code, line 1 of 2.
 
 //Global Variables go here
-int xcoord = 3;
-int ycoord = 4;
+int xcoord = 4;
+int ycoord = 0;
 
 void setup()                    // run once, when the sketch starts
 {
@@ -51,18 +51,70 @@ void setup()                    // run once, when the sketch starts
 
 void loop()
 {
+
   CheckButtonsPress();
   if (Button_Right)
- 
+  
   {
     if (xcoord < 7)
       xcoord = xcoord + 1;       //Also xcoord+1
     else xcoord = 0;
+ 
+  }
+ 
+  if (Button_Left)
+  
+  {
+    if (xcoord > 0)
+      xcoord = xcoord - 1;
+    else xcoord = 7;
+  
   }
   
-  DrawPx(xcoord,ycoord,Red);
+  if (Button_Up)
+  
+  {
+    if (ycoord < 7)
+      
+    {
+      if (ReadPx ( xcoord, ycoord + 1) == Red)
+      {
+      }
+      else
+      {
+          ycoord --;
+      }
+    }
+   else ycoord = 0;
+     ycoord = ycoord + 1;
+  }
+  
+      
+
+    
+  
+  
+  if (Button_Down)
+  
+  {
+    if (ycoord > 0)
+      ycoord = ycoord - 1;
+    else ycoord = 7;
+  }
+
+  
+  DrawPx(xcoord,ycoord,Blue);
   DisplaySlate();
   delay(1);
   ClearSlate();
-
+  
+  DrawPx(2,4,Red);
+  DrawPx(3,4,Red);
+  DrawPx(4,4,Red);
+  DrawPx(5,4,Red);
 }
+
+ 
+
+
+  
