@@ -56,9 +56,16 @@ void loop()
   if (Button_Right)
   
   {
-    if (xcoord < 7)
-      xcoord = xcoord + 1;       //Also xcoord+1
-    else xcoord = 0;
+     if (xcoord < 7)
+       {
+       if (ReadPx (xcoord+1,ycoord) == Red)
+        {
+        }
+      else
+       {
+        xcoord = xcoord+1;
+       }
+       }
  
   }
  
@@ -66,8 +73,15 @@ void loop()
   
   {
     if (xcoord > 0)
-      xcoord = xcoord - 1;
-    else xcoord = 7;
+      {
+      if (ReadPx (xcoord-1,ycoord) == Red)
+        {
+        }
+      else
+      {
+        xcoord = xcoord - 1;
+      }
+      }
   
   }
   
@@ -75,31 +89,33 @@ void loop()
   
   {
     if (ycoord < 7)
-      
-    {
-      if (ReadPx ( xcoord, ycoord + 1) == Red)
       {
-      }
+       if (ReadPx (xcoord,ycoord+1) == Red)
+        {
+        }
       else
       {
-          ycoord --;
+        ycoord = ycoord+1;
       }
-    }
-   else ycoord = 0;
-     ycoord = ycoord + 1;
+      }
+       
   }
   
-      
-
-    
-  
+     
   
   if (Button_Down)
   
   {
-    if (ycoord > 0)
-      ycoord = ycoord - 1;
-    else ycoord = 7;
+     if (ycoord > 0)
+       {
+      if (ReadPx (xcoord,ycoord-1) == Red)
+        {
+        }
+      else
+       {
+        ycoord = ycoord - 1;
+       }
+       }
   }
 
   
